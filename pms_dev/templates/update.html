@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{% endblock %}
+
+{% block body %}
+
+<div class="content">
+    <h1>Update Application</h1>
+    <div>
+        <form action="/update/{{task.id}}" method="POST" >
+            <input type="text" name = "username" id="username" value="{{task.username}}">
+            <input type="text" name = "password" id="password" value="">
+            <input type="submit" value="Update">
+        </form>
+    </div>
+</div>
+{% endblock %}

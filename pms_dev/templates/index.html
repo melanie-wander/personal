@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+
+<div class="pmsapp">
+    <h1>PMS Manager</h1>
+    {% if tasks|length < 1 %} 
+    <h4>There are no Applications. Please add one below</h4>
+    {% else %}
+     <table>
+         <tr>
+             <th>App ID</th>
+             <th>App Name</th>
+             <th>Last Updated</th>
+         </tr>
+         {% for app in apps %}
+             <tr>
+                 <td>{{ app.id }}</td>
+                 <td>{{ app.appname }}</td>
+                 <td>{{ app.last_updated.date() }}</td>
+                 <td>
+                     <a href="/delete/{{app.id}}"> Delete </a>
+                     <br>
+                     <a href="/update/{{app.id}}"> Update </a>
+                 </td>
+             </tr>
+         {% endfor %}
+     </table>
+     {% endif %}
+        <tr>
+            <th>App Name</th>
+            <th>Username</th>
+            <th>Password</th>
+        </tr>
+         <form action="/apps/" method="POST" >
+             <input type="text" name = "appname" id="appname">
+             <input type="text" name = "username" id="username">
+             <input type="text" name = "password" id="password">
+             <input type="submit" value="Add App">
+         </form>
+ 
+ 
+</div>
+{% endblock %}
